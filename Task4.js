@@ -605,3 +605,12 @@ function uniqueTags(arr1,arr2){
     return result;
 }
 console.log(uniqueTags(arr1,arr2));
+
+function copyOfArrays(){
+  let result = [];
+  for(let i = 0; i < arguments.length; i++){
+    result.push(Object.assign({}, arguments[i]))
+  }
+  return result;
+}
+console.log(copyOfArrays(arr1,arr2));

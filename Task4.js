@@ -573,7 +573,7 @@ function filter(arr1, arr2){
 
 console.log(filter(arr1, arr2));
 
-function a(arr1){
+function uniqueTags(arr1,arr2){
     function myIncludes(arr, item){
         let is = false;
         arr.forEach(element => {
@@ -584,19 +584,24 @@ function a(arr1){
         return is;
     }
     let result = [];
-    for(let i = 0; i < arr1.length; i++){               //прошлись по массиву объектов
-        for(let j = 0; j < arr1[i].tags.length;j++)     //проходимся по массиву тэгс каждого объекта
-            if(!myIncludes(result, arr1[i].tags[j])){            //состоит из стринг, 
+    for(let i = 0; i < arr1.length; i++){               
+        for(let j = 0; j < arr1[i].tags.length;j++)     
+            if(!myIncludes(result, arr1[i].tags[j])){             
                 result.push({
                     id: result.length,
                     tag: arr1[i].tags[j].toString()
                 });
             }
     }
+    for(let i = 0; i < arr2.length; i++){               
+      for(let j = 0; j < arr2[i].tags.length;j++)     
+          if(!myIncludes(result, arr2[i].tags[j])){             
+              result.push({
+                  id: result.length,
+                  tag: arr2[i].tags[j].toString()
+              });
+          }
+  }
     return result;
 }
-console.log(a(arr1));
-
-    function copyArrays(){
-
-    }
+console.log(uniqueTags(arr1,arr2));

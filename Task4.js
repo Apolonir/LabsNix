@@ -547,9 +547,8 @@ const arr2 = [
 function filter(arr1, arr2){
     let res = [];
     for(let i = 0;i < arr1.length; i++){
-        var punctuationless = arr1[i].balance.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-        arr1[i].finalBalance = parseFloat(punctuationless.replace(/\s{2,}/g," "));
-        if(arr1[i].finalBalance > 2000 
+        var punctuationless = parseFloat(arr1[i].balance.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+        if(punctuationless > 2000 
             && arr1[i].age < 30
             && (arr1[i].eyeColor === ('blue') || arr1[i].eyeColor === ('brown')) 
             && (arr1[i].tags.includes('velit') && arr1[i].tags.includes('anim')
@@ -558,9 +557,8 @@ function filter(arr1, arr2){
         }
     }
     for( let i = 0;i < arr2.length; i++){
-        var punctuationless = arr2[i].balance.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-        arr2[i].finalBalance = parseFloat(punctuationless.replace(/\s{2,}/g," "));
-        if(arr2[i].finalBalance > 2000 
+        var punctuationless = parseFloat(arr2[i].balance.replace(/[,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+        if( punctuationless > 2000 
             && arr2[i].age < 30
             && (arr2[i].eyeColor === ('blue') || arr2[i].eyeColor === ('brown')) 
             && (arr2[i].tags.includes('velit') && arr2[i].tags.includes('anim')
@@ -575,10 +573,11 @@ console.log(filter(arr1, arr2));
 
 function uniqueTags(arr1,arr2){
     function myIncludes(arr, item){
-        let is = false;
+        let is = false;       
         arr.forEach(element => {
             if(element.tag === item){
                 is = true;
+                return;
             } 
         });
         return is;
@@ -593,6 +592,7 @@ function uniqueTags(arr1,arr2){
                 });
             }
     }
+
     for(let i = 0; i < arr2.length; i++){               
       for(let j = 0; j < arr2[i].tags.length;j++)     
           if(!myIncludes(result, arr2[i].tags[j])){             
@@ -604,6 +604,7 @@ function uniqueTags(arr1,arr2){
   }
     return result;
 }
+
 console.log(uniqueTags(arr1,arr2));
 
 function copyOfArrays(){

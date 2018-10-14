@@ -608,9 +608,11 @@ console.log(uniqueTags(arr1,arr2));
 
 function copyOfArrays(){
   let result = [];
+  let t;
   for(let i = 0; i < arguments.length; i++){
-    result.push(Object.assign({}, arguments[i]))
-  }
+      for(let j = 0; j < arguments[i].length; j++){
+          result.push(Object.assign({},arguments[i][j]));}}
   return result;
 }
+
 console.log(copyOfArrays(arr1,arr2));
